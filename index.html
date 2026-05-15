@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desert Adventure Riyadh</title>
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -17,15 +15,14 @@ font-family:Arial, sans-serif;
 background-color:#f5e6c8;
 color:#333;
 }
-
 nav{
 background-color:#8b5e34;
 padding:15px;
 text-align:center;
 position:sticky;
 top:0;
+z-index:1000;
 }
-
 nav a{
 color:white;
 text-decoration:none;
@@ -33,12 +30,19 @@ margin:15px;
 font-size:18px;
 font-weight:bold;
 }
-
 nav a:hover{
 color:#f7d9a0;
 }
+.datetime{
+background-color:#6d4727;
+color:white;
+text-align:center;
+padding:10px;
+font-size:18px;
+}
+
 .hero{
-background-image:url("desert.jpeg");
+background-image:url("C:\Users\layan\OneDrive\Desktop\mis317\images\desert.jpeg");
 background-size:cover;
 background-position:center;
 height:500px;
@@ -48,13 +52,11 @@ align-items:center;
 text-align:center;
 color:white;
 }
-
 .hero-text{
 background-color:rgba(0,0,0,0.5);
 padding:30px;
 border-radius:10px;
 }
-
 .hero h1{
 font-size:55px;
 margin-bottom:15px;
@@ -68,7 +70,6 @@ font-size:22px;
 padding:60px 20px;
 text-align:center;
 }
-
 .activities h2{
 font-size:40px;
 color:#8b5e34;
@@ -88,6 +89,11 @@ width:300px;
 border-radius:10px;
 overflow:hidden;
 box-shadow:0 4px 8px rgba(0,0,0,0.2);
+transition:0.4s;
+}
+
+.card:hover{
+transform:scale(1.08);
 }
 
 .card img{
@@ -174,6 +180,14 @@ button:hover{
 background-color:#6d4727;
 }
 
+#thankyou{
+display:none;
+margin-top:20px;
+font-size:22px;
+color:green;
+font-weight:bold;
+}
+
 .map{
 padding:60px 20px;
 text-align:center;
@@ -192,6 +206,23 @@ border:0;
 border-radius:10px;
 }
 
+.external-link{
+text-align:center;
+padding:30px;
+}
+
+.external-link a{
+background-color:#8b5e34;
+color:white;
+padding:15px 25px;
+text-decoration:none;
+border-radius:8px;
+font-size:18px;
+}
+
+.external-link a:hover{
+background-color:#6d4727;
+}
 
 .contact{
 padding:40px;
@@ -213,7 +244,10 @@ margin-top:40px;
 
 </style>
 </head>
+
 <body>
+<div class="datetime" id="datetime"></div>
+
 <nav>
 <a href="#home">Home</a>
 <a href="#activities">Activities</a>
@@ -234,18 +268,19 @@ margin-top:40px;
 <div class="activity-container">
 
 <div class="card">
-<img src="dunebashing.webp">
+<img src="C:\Users\layan\OneDrive\Desktop\mis317\images\dunebashing.webp">
 <h3>Dune Bashing</h3>
 <p>Enjoy exciting rides across the desert dunes with professional drivers.</p>
 </div>
 
 <div class="card">
-<img src="camel.webp">
+<img src="C:\Users\layan\OneDrive\Desktop\mis317\images\camel.webp" alt "camel riding>
 <h3>Camel Riding</h3>
 <p>Experience traditional camel rides and beautiful desert scenery.</p>
 </div>
+
 <div class="card">
-<img src="camping.jpg">
+<img src="C:\Users\layan\OneDrive\Desktop\mis317\images\camping.jpg">
 <h3>Desert Camping</h3>
 <p>Spend the night under the stars with food and campfire activities.</p>
 </div>
@@ -253,6 +288,7 @@ margin-top:40px;
 </section>
 <section class="packages" id="packages">
 <h2>Packages & Prices</h2>
+
 <table>
 <tr>
 <th>Package</th>
@@ -277,25 +313,66 @@ margin-top:40px;
 </table>
 </section>
 <section class="booking" id="booking">
+
 <h2>Book Your Adventure</h2>
-<form>
+
+<form id="bookingForm">
+
 <input type="text" placeholder="Enter Your Name" required>
 <input type="email" placeholder="Enter Your Email" required>
 <input type="date" required>
-<select required>
-<option value="">Select Package</option>
-<option>Basic</option>
-<option>Premium</option>
-<option>VIP</option>
+ <select required>
+    <option value="">Select Package</option>
+    <option>Basic</option>
+    <option>Premium</option>
+    <option>VIP</option>
 </select>
 <input type="number" placeholder="Number of Guests" required>
 <button type="submit">Book Now</button>
 </form>
-</section>
+<form id="bookingForm">
+</form>
+<p id="thankyou" style="display:none; color:green; font-size:20px; margin-top:15px;">
+Thank you for booking with Desert Adventure Riyadh!
+</p>
+
+<script>
+
+document.getElementById("bookingForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    document.getElementById("thankyou").style.display = "block";
+
+});
+
+</script></section>
 <section class="map" id="map">
-<h2>Our Location</h2>
+<h2>Desert Locations Near Riyadh</h2>
 <iframe
- src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.142134021406!2d47.303468339684386!3d25.36655247769545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2efd5bfebdf593%3A0xe00172a7726ab723!2z2LHZiNi22Kkg2K7YsdmK2YU!5e0!3m2!1sen!2ssa!4v1778865472408!5m2!1sen!2ssa" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.142134021406!2d47.303468339684386!3d25.36655247769545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2efd5bfebdf593%3A0xe00172a7726ab723!2z2LHZiNi22Kkg2K7YsdmK2YU!5e0!3m2!1sen!2ssa!4v1778865472408!5m2!1sen!2ssa" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+<section class="external-link">
+<h2 style="margin-bottom:20px; color:#8b5e34;">
+Visit Riyadh Season
+</h2>
+<a href="https://riyadhseason.com/" target="_blank">
+Explore More Adventures
+</a>
+<p id="date"></p>
+
+<body>
+  <script>
+// Step 1: Get the element
+var dateElement = document.getElementById("date");
+
+// Step 2: Get current date
+var today = new Date();
+
+// Step 3: Show it in the element
+dateElement.textContent = "Today is: " + today.toDateString();
+  </script>
+</body>
 </section>
 <section class="contact">
 <h2>Contact Us</h2>
@@ -305,5 +382,5 @@ margin-top:40px;
 <footer>
 <p>© 2026 Desert Adventure Riyadh</p>
 </footer>
-</body>
+ </body>
 </html>
